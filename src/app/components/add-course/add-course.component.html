@@ -1,0 +1,46 @@
+<app-header></app-header>
+<body>
+
+<form ngNativeValidate (ngSubmit)="saveCourse()">
+
+<h2>Add new course</h2>
+
+<div>
+<h3>Name: </h3>
+<input required class="course-name"
+    type="text"
+    name="course"
+    [(ngModel)]="course.name"
+    placeholder="Enter new course name" 
+  />
+</div>
+
+
+<div required>
+  <h3> Degree level: </h3>
+  <label>
+    <input  class="radio" [(ngModel)]="course.degreeLevel" type="radio" name="level" required #level="ngModel" value="Bsc" /> BSc
+  </label>
+  <label>
+    <input class="radio" [(ngModel)]="course.degreeLevel" type="radio"  name="level" required #level="ngModel" value="Msc"/> MSc
+  </label>
+</div>
+
+
+
+<div>
+  <h3> Number of semester: </h3>
+  <select required id="semester" name="semester" [(ngModel)]="course.semester" >
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+</div>
+
+<button type="submit">Add course</button>
+
+</form>
+
+</body>

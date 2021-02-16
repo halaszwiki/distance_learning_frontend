@@ -1,0 +1,45 @@
+form {
+  position: relative;
+  top: 40px;
+  left: 40%;
+}
+
+.course-name {
+  height: 35px;
+  width: 250px;
+  border-radius: 40px;
+  border-width: 1px;
+  padding: 5px 15px;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+select {
+  min-width: 90px;
+  margin-bottom: 20px;
+  border-radius: 40px;
+  padding: 3px;
+  outline: none;
+}
+
+.radio {
+  margin-bottom: 20px;
+  margin-left: 15px;
+  display: inline-block;
+}
+
+button {
+  min-width: 100px;
+  margin-top: 40px;
+  border-radius: 40px;
+  padding: 8px;
+  outline: none;
+  text-align: center;
+  background-color: rgb(233, 210, 180);
+}
+
+h3 {
+  display: inline-block;
+  margin-right: 50px;
+  text-align: start;
+}
