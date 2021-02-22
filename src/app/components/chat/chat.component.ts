@@ -1,6 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ChatMessage } from 'src/app/models/chatMessage';
+import { Component } from '@angular/core';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 
 @Component({
@@ -8,22 +6,17 @@ import { WebSocketService } from 'src/app/services/web-socket.service';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit, OnDestroy {
+export class ChatComponent {
 
- stompClient: any = null;
-  constructor(public webSocketService: WebSocketService) { }
-
-  ngOnInit(): void {
-    this.webSocketService.openWebSocket();
+  input;
+  constructor(public wsService: WebSocketService) {
+    wsService.initializeWebSocketConnection();
   }
 
-  ngOnDestroy(): void {
-    this.webSocketService.closeWebSocket();
-  }
-
-  sendMessage(sendForm: NgForm) {
-    const chatMessageDto = new ChatMessage(sendForm.value.user, sendForm.value.message);
-    this.webSocketService.sendMessage(chatMessageDto);
-    sendForm.controls.message.reset();
+  sendMessage() {
+    if (this.input) {
+      this.wsService.sendMessage(this.input);
+      this.input = '';
+    }
   }
 }

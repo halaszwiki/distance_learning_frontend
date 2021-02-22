@@ -26,6 +26,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { AuthGuard } from './helpers/auth-guard.service';
+import { StompService } from 'ng2-stomp-service';
 
 const routers: Routes = [
   { path: 'welcome', component: WelcomeComponent,},
@@ -72,7 +73,7 @@ const routers: Routes = [
     ReactiveFormsModule,
     MatButtonModule,
   ],
-  providers: [authInterceptorProviders, AuthGuard],
+  providers: [authInterceptorProviders, AuthGuard, StompService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

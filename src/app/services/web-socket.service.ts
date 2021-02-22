@@ -1,38 +1,30 @@
 import { Injectable } from '@angular/core';
-import { ChatMessage } from '../models/chatMessage';
+import { Stomp } from '@stomp/stompjs';
+import * as SockJS from 'sockjs-client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebSocketService {
 
-  webSocket: WebSocket;
-  chatMessages: ChatMessage[] = [];
-
-  constructor() { }
-
-  public openWebSocket(){
-    this.webSocket = new WebSocket('ws://localhost:8080/chat');
-
-    this.webSocket.onopen = (event) => {
-      console.log('Open: ', event);
-    };
-
-    this.webSocket.onmessage = (event) => {
-      const chatMessageDto = JSON.parse(event.data);
-      this.chatMessages.push(chatMessageDto);
-    };
-
-    this.webSocket.onclose = (event) => {
-      console.log('Close: ', event);
-    };
+  public stompClient;
+  public msg = [];
+  initializeWebSocketConnection() {
+    const serverUrl = 'http://localhost:8080/app/socket';
+    const ws = new SockJS(serverUrl);
+    this.stompClient = Stomp.over(ws);
+    const that = this;
+  
+    this.stompClient.connect({}, function(frame) {
+      that.stompClient.subscribe('/message', (message) => {
+        if (message.body) {
+          that.msg.push(message.body);
+        }
+      });
+    });
   }
 
-  public sendMessage(chatMessageDto: ChatMessage){
-    this.webSocket.send(JSON.stringify(chatMessageDto));
-  }
-
-  public closeWebSocket() {
-    this.webSocket.close();
+  sendMessage(message) {
+    this.stompClient.send('/app/send/message' , {}, message);
   }
 }
