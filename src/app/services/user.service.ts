@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators'
 })
 export class UserService {
 
-  private getUrl: string = "http://localhost:8080/user";
+  private getUrl: string = "/api/user";
 
   constructor(private _httpClient: HttpClient) { }
 
