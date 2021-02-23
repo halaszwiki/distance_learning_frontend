@@ -14,7 +14,8 @@ export class AppComponent implements OnInit {
   showModeratorBoard = false;
   username: string;
 
-  constructor(private tokenStorageService: TokenStorageService, stomp: StompService) {
+  constructor(private tokenStorageService: TokenStorageService/*, stomp: StompService*/) {
+    /*
     stomp.configure({
       host:'test.com',
       debug:true,
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
 
     stomp.startConnect().then(() => {
       console.log('connected');
-    });
+    });*/
    }
 
   ngOnInit(): void {
