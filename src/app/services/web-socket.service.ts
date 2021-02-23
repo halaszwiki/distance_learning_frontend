@@ -10,7 +10,7 @@ export class WebSocketService {
   public stompClient;
   public msg = [];
   initializeWebSocketConnection() {
-    const serverUrl = 'http://localhost:8080/app/socket';
+    const serverUrl = 'http://localhost:8080/socket';
     const ws = new SockJS(serverUrl);
     this.stompClient = Stomp.over(ws);
     const that = this;
