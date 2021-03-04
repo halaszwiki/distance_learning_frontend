@@ -4,6 +4,6 @@
 <button class="btn btn-success" (click)="sendMessage()">Send</button>
 <div class="content">
   <div *ngFor="let msg of wsService.msg">
-    {{msg}}
+   {{username}} : {{msg}}
   </div>
 </div>

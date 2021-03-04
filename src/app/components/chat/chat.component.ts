@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 
 @Component({
@@ -8,9 +9,10 @@ import { WebSocketService } from 'src/app/services/web-socket.service';
 })
 export class ChatComponent {
 
-  input;
+  input: String;
   constructor(public wsService: WebSocketService) {
-    wsService.initializeWebSocketConnection();
+    
+    wsService.connect();
   }
 
   sendMessage() {
