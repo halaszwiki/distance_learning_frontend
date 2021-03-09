@@ -1,4 +1,3 @@
-import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Stomp } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
@@ -11,46 +10,23 @@ export class WebSocketService {
 
   constructor(public tokenService: TokenStorageService){}
 
-  public token = this.tokenService.getToken();
-  public stompClient;
-  public msg = [];
+  token = this.tokenService.getToken();
+  username = this.tokenService.getUser().username;
+  stompClient: any;
+  msg: String[] = [];
 
   connect() {
-    const serverUrl = 'http://localhost:8080/socket';
-    const ws = new SockJS(serverUrl);
+    const ws = new SockJS('http://localhost:8080/socket');
     this.stompClient = Stomp.over(ws);
-  
-    this.stompClient.connect({"X-Authorization":
-    "Bearer " + this.token}, function(frame) {
-      console.log('Connected:' + frame); 
-      this.stompClient.subscribe('/message', (message) => {
-        if (message.body) {
-          this.msg.push(message.body);
+    let that = this;
+    this.stompClient.connect({"X-Authorization":"Bearer " + this.token}, function(frame) {      console.log('Connected:' + frame); 
+      that.stompClient.subscribe('/message', (message) => {
+        if(message.body){
+            that.msg.push(message.body);
         }
+        });
       });
-    });
-  }
-
-  /*
-var
- socket = new
- SockJS('/chat');
- stompClient = Stomp.over(socket); stompClient.connect({}, function(frame)
-{ setConnected(true);
-console.log('Connected:
- ' + frame); stompClient.subscribe('/topic/messages',
-function(messageOutput)
-{ showMessageOutput(JSON.parse(messageOutput.body));
- }); }); }
-
-
-
-és a stompClient.connect-et kell
- módosítani ilyesmire:
-
-stompClient.connect({"X-Authorization":
- "Bearer " + jwtToken}, function (frame) {...
-  */
+    }
 
   sendMessage(message) {
     this.stompClient.send('/app/send/message' , {}, message);
