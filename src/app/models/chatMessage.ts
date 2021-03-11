@@ -1,9 +1,9 @@
 export class ChatMessage {
-    user: string;
+    username: string;
     message: string;
 
-    constructor(user: string, message: string){
-        this.user = user;
+    constructor(username: string, message: string){
+        this.username = username;
         this.message = message;
     }
 }

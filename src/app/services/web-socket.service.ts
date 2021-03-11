@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Stomp } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
+import { ChatMessage } from '../models/chatMessage';
 import { TokenStorageService } from './token-storage.service';
 
 @Injectable({
@@ -12,23 +13,24 @@ export class WebSocketService {
 
   token = this.tokenService.getToken();
   username = this.tokenService.getUser().username;
-  stompClient: any;
-  msg: String[] = [];
+  stompClient;
+  chatMessage: ChatMessage[] = [];
 
   connect() {
     const ws = new SockJS('http://localhost:8080/socket');
     this.stompClient = Stomp.over(ws);
     let that = this;
-    this.stompClient.connect({"X-Authorization":"Bearer " + this.token}, function(frame) {      console.log('Connected:' + frame); 
+    this.stompClient.connect({"X-Authorization":"Bearer " + this.token}, function(frame) {      
+      console.log('Connected:' + frame); 
       that.stompClient.subscribe('/message', (message) => {
         if(message.body){
-            that.msg.push(message.body);
+            that.chatMessage.push(message.body);
         }
         });
       });
     }
-
-  sendMessage(message) {
-    this.stompClient.send('/app/send/message' , {}, message);
+  
+  sendMessage(chatMessage){
+    this.stompClient.send('/app/send/message' , {}, JSON.stringify(chatMessage));
   }
 }
