@@ -12,8 +12,9 @@ export class WebSocketService {
   constructor(public tokenService: TokenStorageService){}
 
   token = this.tokenService.getToken();
+  username = this.tokenService.getUser().username;
   stompClient;
-  chatMessage: ChatMessage;
+  chatMessage: ChatMessage[] = [];
 
   connect() {
     const ws = new SockJS('http://localhost:8080/socket');
@@ -22,10 +23,8 @@ export class WebSocketService {
     this.stompClient.connect({"X-Authorization":"Bearer " + this.token}, function(frame) {      
       console.log('Connected:' + frame); 
       that.stompClient.subscribe('/message', (message) => {
-        if(JSON.parse(message.body).message){
-          
-          that.chatMessage.message = JSON.parse(message.body).message;
-          that.chatMessage.username = JSON.parse(message.body).username;
+        if(message.body){
+            that.chatMessage.push(message.body);
         }
         });
       });
