@@ -18,9 +18,7 @@ export class ChatComponent implements OnInit{
   }
 
     sendMessage(sendForm: NgForm) {
-      const chatMessage = new ChatMessage(this.wsService.username, sendForm.value.message);
-      console.log("user: " + chatMessage.username + " message: " + chatMessage.message);
-      this.wsService.sendMessage(chatMessage);
+      this.wsService.sendMessage(sendForm.value.message);
       sendForm.controls.message.reset();
     }
 }

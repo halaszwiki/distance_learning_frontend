@@ -24,7 +24,7 @@ export class WebSocketService {
       console.log('Connected:' + frame); 
       that.stompClient.subscribe('/message', (message) => {
         if(message.body){
-            that.chatMessage.push(message.body);
+            that.chatMessage.push(JSON.parse(message.body));
         }
         });
       });
