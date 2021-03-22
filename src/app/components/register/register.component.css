@@ -11,3 +11,7 @@ h1 {
   text-align: center;
   padding-top: 30px;
 }
+
+.radio-inline {
+  padding-right: 10px;
+}

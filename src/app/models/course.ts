@@ -5,5 +5,9 @@ export class Course {
     name: string;
     semester: number;
     degreeLevel: string;
+    program: string;
+    days: string[];
+    start: string;
+    end: string;
     usersInCourse: User[];
 }

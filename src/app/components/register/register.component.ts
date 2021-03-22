@@ -23,7 +23,6 @@ export class RegisterComponent {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
-        this._router.navigateByUrl("/login");
       },
       err => {
         this.errorMessage = err.error.message;

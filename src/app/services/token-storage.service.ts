@@ -33,4 +33,10 @@ export class TokenStorageService {
   public getUser(): any {
     return JSON.parse(sessionStorage.getItem(USER_KEY));
   }
+
+  public isTeacher(): boolean{
+    const role = this.getUser().roles;
+    console.log(role);
+    return role.some(role => role.includes("ROLE_TEACHER"));
+  }
 }

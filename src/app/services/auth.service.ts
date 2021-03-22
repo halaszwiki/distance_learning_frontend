@@ -27,6 +27,7 @@ const httpOptions = {
         username: user.username,
         email: user.email,
         password: user.password,
+        role: user.roles,
       }, httpOptions);
     }
   }

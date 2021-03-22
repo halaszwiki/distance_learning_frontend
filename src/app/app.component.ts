@@ -8,7 +8,7 @@ import { StompService } from 'ng2-stomp-service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  private roles: string[];
+  isTeacher = false;
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
@@ -22,7 +22,8 @@ export class AppComponent implements OnInit {
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
+      this.isTeacher = user.roles.some(role => role.includes("ROLE_TEACHER")) ? true : false;
+      console.log(this.isTeacher);
       this.username = user.username;
     }
   }

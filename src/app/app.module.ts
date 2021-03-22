@@ -27,16 +27,17 @@ import { ChatComponent } from './components/chat/chat.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { AuthGuard } from './helpers/auth-guard.service';
 import { StompService } from 'ng2-stomp-service';
+import { RoleGuard } from './helpers/role-guard.service';
 
 const routers: Routes = [
   { path: 'welcome', component: WelcomeComponent,},
   {path: 'courses', component: CourselistComponent, canActivate: [AuthGuard]},
   {path: 'users', component: UserlistComponent, canActivate: [AuthGuard]},
-  {path: 'addcourse', component: AddCourseComponent, canActivate: [AuthGuard]},
-  {path: 'editcourse/:id', component: AddCourseComponent, canActivate: [AuthGuard]},
+  {path: 'addcourse', component: AddCourseComponent, canActivate: [AuthGuard, RoleGuard]},
+  {path: 'editcourse/:id', component: AddCourseComponent, canActivate: [AuthGuard, RoleGuard]},
   {path: 'header', component: HeaderComponent},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
   { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   // otherwise redirect to home
@@ -73,7 +74,7 @@ const routers: Routes = [
     ReactiveFormsModule,
     MatButtonModule,
   ],
-  providers: [authInterceptorProviders, AuthGuard, StompService],
+  providers: [authInterceptorProviders, AuthGuard, RoleGuard, StompService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

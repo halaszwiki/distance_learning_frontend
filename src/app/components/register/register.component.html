@@ -58,6 +58,20 @@
         </div>
 
         <div class="form-group">
+          <label for="">Role</label>
+          <div class="form-control">
+            <label class="radio-inline">
+              <input name="role" value="student" [(ngModel)]="form.roles" type="radio"/>
+              Student
+            </label>
+            <label class="radio-inline">
+              <input name="role" value="teacher" [(ngModel)]="form.roles" type="radio"/>
+              Teacher
+            </label>
+        </div>
+      </div>
+
+        <div class="form-group">
           <button class="btn btn-primary btn-block">Sign Up</button>
         </div>
   

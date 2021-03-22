@@ -26,6 +26,15 @@
   </label>
 </div>
 
+<div required>
+  <h3> Program: </h3>
+  <label>
+    <input  class="radio" [(ngModel)]="course.program" type="radio" name="program" required #level="ngModel" value="Electrical Engineering" /> Electrical Engineering
+  </label>
+  <label>
+    <input class="radio" [(ngModel)]="course.program" type="radio"  name="program" required #level="ngModel" value="Computer Engineering"/> Computer Engineering
+  </label>
+</div>
 
 
 <div>
