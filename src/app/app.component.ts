@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from './services/token-storage.service';
 import { StompService } from 'ng2-stomp-service';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit {
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
-  username: string;
+  user: User = new User();
 
   constructor(private tokenStorageService: TokenStorageService) {
    }
@@ -21,11 +22,14 @@ export class AppComponent implements OnInit {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.isTeacher = user.roles.some(role => role.includes("ROLE_TEACHER")) ? true : false;
-      console.log(this.isTeacher);
-      this.username = user.username;
+      this.user = this.tokenStorageService.getUser();
+      this.isTeacher = this.user.roles.some(role => role.includes("ROLE_TEACHER")) ? true : false;
+      console.log(this.user);
     }
+  }
+
+  getUser(): User {
+    return this.user;
   }
 
  logout(){

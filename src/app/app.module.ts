@@ -30,6 +30,7 @@ import { AuthGuard } from './helpers/auth-guard.service';
 import { StompService } from 'ng2-stomp-service';
 import { RoleGuard } from './helpers/role-guard.service';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routers: Routes = [
   { path: 'welcome', component: WelcomeComponent,},
@@ -43,6 +44,7 @@ const routers: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
   { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   // otherwise redirect to home
   { path: '**', redirectTo: 'welcome' }
 ];
@@ -61,7 +63,8 @@ const routers: Routes = [
     RegisterComponent,
     ChatComponent,
     WelcomeComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

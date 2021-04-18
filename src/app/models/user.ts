@@ -1,3 +1,5 @@
+import { Course } from "./course";
+
 export class User {
 
     id: number;
@@ -5,4 +7,5 @@ export class User {
 	username: string;
 	email: string;
 	password: string;
+	courses: Course[];
 }
