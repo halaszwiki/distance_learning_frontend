@@ -24,7 +24,6 @@ export class AppComponent implements OnInit {
     if (this.isLoggedIn) {
       this.user = this.tokenStorageService.getUser();
       this.isTeacher = this.user.roles.some(role => role.includes("ROLE_TEACHER")) ? true : false;
-      console.log(this.user);
     }
   }
 

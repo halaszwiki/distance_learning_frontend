@@ -16,9 +16,9 @@ export class ProfileComponent implements OnInit {
 
   constructor(private _userService: UserService, private _activatedRoute: ActivatedRoute) { }
   ngOnInit(): void {
-    const isIdPresent = this._activatedRoute.data;
+    const isIdPresent = this._activatedRoute.snapshot.paramMap.has('id');
     if(isIdPresent){
-      const id = +this._activatedRoute.data;
+      const id = +this._activatedRoute.snapshot.paramMap.has('id');
       this._userService.getUser(id).subscribe(
         data => this.user = data)
        
