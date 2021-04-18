@@ -1,4 +1,4 @@
-import { Component, OnInit, SystemJsNgModuleLoaderConfig } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { Course } from 'src/app/models/course';
 import { CourseService } from 'src/app/services/course.service';
@@ -12,12 +12,8 @@ export class AddCourseComponent implements OnInit {
 
   course: Course = new Course();
   searchBox: string;
-  degreeLevels: string[] = ['Bsc', 'MSc'];
-  program: string[] = ['Electrical Engineering', 'Computer Engineering'];
-  days: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  start: string;
-  end: string;
-  selectedLevel: string = '';
+  days: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  dropdownSettings = {};
 
   constructor(private _courseService: CourseService,
     private _router: Router,
@@ -32,18 +28,31 @@ export class AddCourseComponent implements OnInit {
        
     }
     console.log(this.course.name);
+    this.dropdownSettings = {
+      textField: 'days',
+    };
   }
 
   saveCourse() {
-    this._courseService.saveCourse(this.course).subscribe(
-    data => {
-      console.log('response', data);
-        this._router.navigateByUrl("/courses");
-      }
-    )
+      this._courseService.saveCourse(this.course).subscribe(
+        data => {
+          console.log('response', data);
+            this._router.navigateByUrl("/courses");
+          }
+        )
   }
 
-  radioChanged(event: any){
-  this.selectedLevel = event.target.value;
+  onDaySelected(day){
+    const index: number = this.course.days.indexOf(day);
+    if (index == -1) {
+        this.course.days.push(day);
+    }  
   }
+
+  onDayDeselected(day){
+    const index: number = this.course.days.indexOf(day);
+    if (index !== -1) {
+        this.course.days.splice(index, 1);
+    }   
+}
 }

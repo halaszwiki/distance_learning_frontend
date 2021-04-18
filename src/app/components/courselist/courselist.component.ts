@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { Course } from 'src/app/models/course';
 import { CourseService } from 'src/app/services/course.service';
 
@@ -17,7 +18,7 @@ export class CourselistComponent implements OnInit {
   reverse: boolean = false;
 
   constructor(private _courseService: CourseService,
-    private _router: Router) { }
+    private _router: Router, public app: AppComponent) { }
 
   ngOnInit(): void {
 this.listCourses();
@@ -45,4 +46,5 @@ this._courseService.deleteCourse(id).subscribe(
       data => this.courses = data
     )
   }
+
 }

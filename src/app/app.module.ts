@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {  NgModule } from '@angular/core';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule, Routes } from "@angular/router";
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -28,10 +29,12 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { AuthGuard } from './helpers/auth-guard.service';
 import { StompService } from 'ng2-stomp-service';
 import { RoleGuard } from './helpers/role-guard.service';
+import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 
 const routers: Routes = [
   { path: 'welcome', component: WelcomeComponent,},
   {path: 'courses', component: CourselistComponent, canActivate: [AuthGuard]},
+  {path: 'coursedetail/:id', component: CourseDetailComponent, canActivate: [AuthGuard]},
   {path: 'users', component: UserlistComponent, canActivate: [AuthGuard]},
   {path: 'addcourse', component: AddCourseComponent, canActivate: [AuthGuard, RoleGuard]},
   {path: 'editcourse/:id', component: AddCourseComponent, canActivate: [AuthGuard, RoleGuard]},
@@ -57,7 +60,8 @@ const routers: Routes = [
     LoginComponent,
     RegisterComponent,
     ChatComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +69,7 @@ const routers: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routers),
     FormsModule,
+    NgMultiSelectDropDownModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,

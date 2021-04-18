@@ -43,3 +43,7 @@ h3 {
   margin-right: 50px;
   text-align: start;
 }
+
+div.days {
+  max-width: 200px;
+}
