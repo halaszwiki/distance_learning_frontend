@@ -12,7 +12,6 @@ export class WebSocketService {
   constructor(public tokenService: TokenStorageService){}
 
   token = this.tokenService.getToken();
-  username = this.tokenService.getUser().username;
   stompClient;
   chatMessage: ChatMessage[] = [];
 
@@ -21,7 +20,6 @@ export class WebSocketService {
     this.stompClient = Stomp.over(ws);
     let that = this;
     this.stompClient.connect({"X-Authorization":"Bearer " + this.token}, function(frame) {      
-      console.log('Connected:' + frame); 
       that.stompClient.subscribe('/message', (message) => {
         if(message.body){
             that.chatMessage.push(JSON.parse(message.body));

@@ -11,7 +11,7 @@ import { TokenStorageService } from "../services/token-storage.service";
     constructor(private tokenStorage: TokenStorageService, private _router: Router) { }
   
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      if (this.tokenStorage.isLoggedIn() && this.tokenStorage.isTeacher()) {
+      if (this.tokenStorage.isTeacher()) {
           return true;
       }
       this._router.navigate(['/home']);

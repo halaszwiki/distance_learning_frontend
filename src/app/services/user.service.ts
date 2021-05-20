@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators'
 export class UserService {
 
   private getUrl: string = "/api/user";
+  currentUser: User;
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -30,4 +31,6 @@ export class UserService {
   deleteUser(id: number): Observable<any>{
 return this._httpClient.delete(`${this.getUrl}/${id}`, {responseType: 'text'});
   }
+
+
 }

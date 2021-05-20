@@ -23,7 +23,6 @@ export class CourseDetailComponent implements OnInit {
         data => this.course = data)
        
     }
-    console.log(this.course);
   }
 
 }
