@@ -65,24 +65,20 @@
 
 <div>
   <h3> The class starts at: </h3>
-  <select required id="start" name="start" [(ngModel)]="course.start" >
-    <option value="8:15">8:15</option>
-    <option value="10:15">10:15</option>
-    <option value="12:15">12:15</option>
-    <option value="14:15">14:15</option>
-    <option value="16:15">16:15</option> 
+  <select required id="start" name="start" [(ngModel)]="startSelected">
+    <option *ngFor="let start of start" [value]="start">{{start}}:15</option>
   </select>
 </div>
 
 <div>
   <h3> The class ends at: </h3>
-  <select required id="end" name="end" [(ngModel)]="course.end">
-    <option value="10:15">10:15</option>
-    <option value="12:15">12:15</option>
-    <option value="14:15">14:15</option>
-    <option value="16:15">16:15</option>
-    <option value="18:15">18:15</option>
+  <select required id="end" name="end" [(ngModel)]="endSelected">
+    <option *ngFor="let end of end" [value]="end">{{end}}:15</option>
   </select>
+</div>
+
+<div>
+  <p>{{errorMessage}}</p>
 </div>
 
 

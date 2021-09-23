@@ -47,3 +47,7 @@ h3 {
 div.days {
   max-width: 200px;
 }
+
+p {
+  color: red;
+}

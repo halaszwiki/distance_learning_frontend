@@ -7,7 +7,7 @@ export class Course {
     degreeLevel: string;
     program: string;
     days: string[];
-    start: string;
-    end: string;
+    start: Number;
+    end: Number;
     usersInCourse: User[];
 }
