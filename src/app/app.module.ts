@@ -31,6 +31,7 @@ import { StompService } from 'ng2-stomp-service';
 import { RoleGuard } from './helpers/role-guard.service';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CommentsComponent } from './components/comments/comments.component';
 
 const routers: Routes = [
   { path: 'welcome', component: WelcomeComponent,},
@@ -45,6 +46,7 @@ const routers: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]},
+  { path: 'comments/:id', component: CommentsComponent, canActivate: [AuthGuard]},
   // otherwise redirect to home
   { path: '**', redirectTo: 'welcome' }
 ];
@@ -64,7 +66,8 @@ const routers: Routes = [
     ChatComponent,
     WelcomeComponent,
     CourseDetailComponent,
-    ProfileComponent
+    ProfileComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

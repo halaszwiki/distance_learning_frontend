@@ -10,4 +10,5 @@ export class Course {
     start: Number;
     end: Number;
     usersInCourse: User[];
+    comments: Comment[];
 }
