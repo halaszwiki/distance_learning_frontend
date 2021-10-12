@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { data } from 'jquery';
 import { AppComponent } from 'src/app/app.component';
 import { Course } from 'src/app/models/course';
 import { CourseService } from 'src/app/services/course.service';
@@ -15,7 +16,6 @@ export class CourselistComponent implements OnInit {
   courses: Course[] = [];
   searchBox: string;
   key: string = "semester";
-  reverse: boolean = false;
 
   constructor(private _courseService: CourseService,
     private _router: Router, public app: AppComponent) { }
@@ -26,7 +26,6 @@ this.listCourses();
 
   sort(key: string){
     this.key = key;
-    this.reverse = !this.reverse;
   }
 
   delete(i: any){
@@ -46,5 +45,4 @@ this._courseService.deleteCourse(id).subscribe(
       data => this.courses = data
     )
   }
-
 }

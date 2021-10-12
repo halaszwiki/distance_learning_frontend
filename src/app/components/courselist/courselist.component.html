@@ -2,7 +2,7 @@
 <body>
 
 <div class="search">
-  <input class="search-box" type="text" placeholder="Search by course name"/> 
+  <input class="search-box" type="text" placeholder="Search by course name" [(ngModel)]="searchBox"/> 
 </div>
 
   
@@ -16,7 +16,7 @@
       </tr>
     </thead>
   <tbody>
-      <tr *ngFor="let course of courses | coursesearchfilter: searchBox | orderBy : key : reverse ">
+      <tr *ngFor="let course of courses | coursesearchfilter: searchBox | orderBy : key ">
         <td>
           {{ course.name }}
         </td>
