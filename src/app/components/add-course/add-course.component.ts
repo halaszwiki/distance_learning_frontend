@@ -29,13 +29,13 @@ export class AddCourseComponent implements OnInit {
     if(isIdPresent){
       const id = +this._activatedRoute.snapshot.paramMap.get('id');
       this._courseService.getCourse(id).subscribe(
-        data => this.course = data)
-        this.startSelected = this.course.start;
-        this.endSelected = this.course.end;
+        data => {
+          this.course = data;
+          this.startSelected = this.course.start;
+          this.endSelected = this.course.end;
+        });
     }
 
-    console.log(this.startSelected);
-    console.log(this.endSelected);
     this.dropdownSettings = {
       textField: 'days',
     };
