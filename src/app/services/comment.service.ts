@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/internal/Observable";
 import { map } from "rxjs/internal/operators/map";
+import { CommentPayload } from "../models/commentPayload";
 
 @Injectable({
     providedIn: 'root'
@@ -12,14 +13,12 @@ import { map } from "rxjs/internal/operators/map";
 
     constructor(private _httpClient: HttpClient) { }
 
-    getCommentsFromCourse(id: number): Observable<Comment>{
-        return this._httpClient.get<Comment>(`${this.getUrl}/${id}`).pipe(
-          map(response => response)
-        )
+    getCommentsFromCourse(id: number): Observable<CommentPayload[]>{
+        return this._httpClient.get<CommentPayload[]>(`${this.getUrl}/${id}`);
       }
     
-    addComment(comment: Comment): Observable<Comment>{
-        return this._httpClient.post<Comment>(`${this.getUrl}/id`, comment);
+    addComment(comment: CommentPayload): Observable<CommentPayload>{
+        return this._httpClient.post<CommentPayload>(`${this.getUrl}/addComment`, comment);
     }
 
   }  

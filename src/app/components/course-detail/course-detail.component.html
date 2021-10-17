@@ -16,11 +16,27 @@
         <h3 class="title">End</h3>
         <h3>{{course.end}}:15</h3>
         <h3 class="title">Students on the course:</h3>
-        <li  *ngFor="let user of course.users"> 
-             {{user.username}}
+        <li  *ngFor="let user of course.usersInCourse"> 
+             {{usersInCourse.username}}
          </li>
         <button (click)="addCourseToUser()">Add course</button>
-        <button routerLink="/comments/{{course.id}}">Add review</button>
+
+        <div class="post-comment">
+            <form [formGroup]="commentForm" (ngSubmit)="postComment()">
+              <div class="form-group">
+                <textarea class="form-control" [formControlName]="'text'" placeholder="Your Thoughts?"></textarea>
+              </div>
+              <button type="submit" class="login float-right">Comment</button>
+            </form>
+          </div>
+          <div style="margin-top: 60px;" *ngFor="let comment of comments">
+            <div class="comment">
+                <p>{{comment.username}}</p>
+              <div class="username">
+                  
+              </div>
+              <b>{{comment.comment}}</b>
+            </div>
     </div>
     
 </div>
