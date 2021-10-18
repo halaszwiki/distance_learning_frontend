@@ -22,20 +22,26 @@
         <button (click)="addCourseToUser()">Add course</button>
 
         <div class="post-comment">
+            <div class="commentTitle">
+                <h2>Comments</h2>
+            </div>
+
             <form [formGroup]="commentForm" (ngSubmit)="postComment()">
               <div class="form-group">
                 <textarea class="form-control" [formControlName]="'text'" placeholder="Your Thoughts?"></textarea>
               </div>
-              <button type="submit" class="login float-right">Comment</button>
+              <button class="commentButton" type="submit">Comment</button>
             </form>
           </div>
-          <div style="margin-top: 60px;" *ngFor="let comment of comments">
+    <br>
+    <br>
+          <div *ngFor="let comment of comments">
             <div class="comment">
-                <p>{{comment.username}}</p>
+                <p><i class="fa fa-user-circle"></i> {{comment.username}}</p>
               <div class="username">
                   
               </div>
-              <b>{{comment.comment}}</b>
+              <b><i class="fa fa-comment"></i> {{comment.comment}}</b>
             </div>
     </div>
     

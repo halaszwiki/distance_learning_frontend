@@ -32,7 +32,7 @@ export class CourseService {
   }
 
   deleteCourse(id: number): Observable<any>{
-return this._httpClient.delete(`${this.getUrl}/${id}`, {responseType: 'text'});
+    return this._httpClient.delete(`${this.getUrl}/${id}`, {responseType: 'text'});
   }
 
   addCourseToUser(userIdAndCourse: CourseToUser): Observable<CourseToUser>{ 

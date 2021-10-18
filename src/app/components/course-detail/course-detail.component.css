@@ -2,6 +2,14 @@ h3.title {
   font-weight: bold;
 }
 
+.commentTitle {
+  text-align: center;
+}
+
+.commentButton {
+  float: right;
+}
+
 .card {
   margin: auto;
   width: 40%;
@@ -25,17 +33,18 @@ button {
   border-radius: 30px;
   padding: 8px 10px;
   margin-left: 5px;
+  margin-bottom: 10px;
   outline: none;
 }
 
 .comment {
   --post-line-color: #ccc;
   border: 1px solid #ccc;
-  margin-bottom: 10px;
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.8);
-  color: #878a8c;
   position: relative;
   border-radius: 4px;
-  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
 }
