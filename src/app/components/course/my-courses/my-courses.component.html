@@ -1,1 +1,43 @@
-<p>my-courses works!</p>
+<app-header></app-header>
+<body>
+
+<div class="search">
+  <input class="search-box" type="text" placeholder="Search by course name" [(ngModel)]="searchBox"/> 
+</div>
+
+  
+<table>
+  <thead>
+      <tr>
+        <th (click)="sort('name')">Name <i class="fa fa-sort"></i> </th>
+        <th (click)="sort('degreeLevel')">Degree level <i class="fa fa-sort"></i></th>
+        <th (click)="sort('semester')">Number of semester <i class="fa fa-sort"></i></th>
+        <th >Options</th>
+      </tr>
+    </thead>
+  <tbody>
+      <tr *ngFor="let course of courses | coursesearchfilter: searchBox | orderBy : key ">
+        <td>
+          {{ course.name }}
+        </td>
+        <td>
+          {{ course.degreeLevel }}
+        </td>
+        <td>
+          {{ course.semester }}
+        </td>
+        <td>
+            <button *ngIf = "app.isTeacher" routerLink="/editcourse/{{course.id}}">Edit</button>
+            <button *ngIf = "app.isTeacher" (click)="deleteCourse(course.id)">Delete</button>
+            <button *ngIf = "app.isTeacher" routerLink="/addexam/{{course.id}}">Add exam</button>
+            <button routerLink="/coursedetail/{{course.id}}">Details</button>
+            <button *ngIf = "app.isTeacher" routerLink="/users/{{course.id}}">Add user</button>
+        </td>
+      </tr>
+  </tbody>
+</table>
+
+</body>
+
+
+

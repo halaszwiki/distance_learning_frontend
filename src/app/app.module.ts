@@ -36,6 +36,7 @@ import { ExamlistComponent } from './components/exam/exam-list/exam-list.compone
 import { ExamEditComponent } from './components/exam/exam-edit/exam-edit.component';
 import { ExamDetailComponent } from './components/exam/exam-detail/exam-detail.component';
 import { MyCoursesComponent } from './components/course/my-courses/my-courses.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 const routers: Routes = [
   { path: 'welcome', component: WelcomeComponent,},
@@ -54,6 +55,8 @@ const routers: Routes = [
   {path: 'exams', component: ExamlistComponent, canActivate: [AuthGuard]},
   {path: 'editexam/:id', component: ExamEditComponent, canActivate: [AuthGuard, RoleGuard]},
   {path: 'examdetail/:id', component: ExamDetailComponent, canActivate: [AuthGuard]},
+  {path: 'mycourses', component: MyCoursesComponent, canActivate: [AuthGuard, RoleGuard]},
+  {path: 'users/:id', component: AddUserComponent, canActivate: [AuthGuard, RoleGuard]},
   // otherwise redirect to home
   { path: '**', redirectTo: 'welcome' }
 ];
@@ -78,7 +81,8 @@ const routers: Routes = [
     ExamlistComponent,
     ExamEditComponent,
     ExamDetailComponent,
-    MyCoursesComponent
+    MyCoursesComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,

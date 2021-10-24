@@ -12,4 +12,5 @@ export class Course {
     end: Number;
     usersInCourse: User[];
     comments: CommentPayload[];
+    creatorId: Number;
 }

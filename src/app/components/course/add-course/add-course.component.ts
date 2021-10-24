@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Routes } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { Course } from 'src/app/models/course';
 import { CourseService } from 'src/app/services/course.service';
 
@@ -23,6 +24,7 @@ export class AddCourseComponent implements OnInit {
 
   constructor(private _courseService: CourseService,
     private _router: Router,
+    private app: AppComponent,
     private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -45,6 +47,7 @@ export class AddCourseComponent implements OnInit {
   saveCourse() {
       this.course.start = this.startSelected;
       this.course.end = this.endSelected;
+      this.course.creatorId = this.app.getUser().id;
       this._courseService.saveCourse(this.course).subscribe(
         data => {
           console.log('response', data);

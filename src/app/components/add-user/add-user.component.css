@@ -14,7 +14,7 @@ table {
   position: relative;
   left: 25%;
   top: 40px;
-  min-width: 50%;
+  max-width: 50%;
   border-collapse: collapse;
   font-size: 0.9em;
   border-radius: 5px 5px 0 0;

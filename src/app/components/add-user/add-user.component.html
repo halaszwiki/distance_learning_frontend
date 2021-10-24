@@ -1,0 +1,31 @@
+<app-header></app-header>
+ <body>
+   
+
+<div class="search">
+  <input class="search-box" type="text" [(ngModel)]="searchBox" placeholder="Search by name"/>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <tr>
+        <th>Name </th>
+        <th>E-mail</th>
+        <th>id</th>
+        <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users | usersearchfilter : searchBox | orderBy : key">
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.id }}</td>
+      <td>
+        <button (click)="addUserToCourse(user.user_id)">Add user to course</button>
+    </td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
