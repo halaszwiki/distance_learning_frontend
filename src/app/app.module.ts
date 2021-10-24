@@ -12,8 +12,8 @@ import {MatIconModule} from "@angular/material/icon"
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserlistComponent } from './components/userlist/userlist.component';
-import { CourselistComponent } from './components/courselist/courselist.component';
-import { AddCourseComponent } from './components/add-course/add-course.component';
+import { CourselistComponent } from './components/course/courselist/courselist.component';
+import { AddCourseComponent } from './components/course/add-course/add-course.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {Ng2OrderModule} from "ng2-order-pipe";
@@ -29,12 +29,13 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { AuthGuard } from './helpers/auth-guard.service';
 import { StompService } from 'ng2-stomp-service';
 import { RoleGuard } from './helpers/role-guard.service';
-import { CourseDetailComponent } from './components/course-detail/course-detail.component';
+import { CourseDetailComponent } from './components/course/course-detail/course-detail.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { AddExamComponent } from './components/add-exam/add-exam.component';
-import { ExamlistComponent } from './components/exam-list/exam-list.component';
-import { ExamEditComponent } from './components/exam-edit/exam-edit.component';
-import { ExamDetailComponent } from './components/exam-detail/exam-detail.component';
+import { AddExamComponent } from './components/exam/add-exam/add-exam.component';
+import { ExamlistComponent } from './components/exam/exam-list/exam-list.component';
+import { ExamEditComponent } from './components/exam/exam-edit/exam-edit.component';
+import { ExamDetailComponent } from './components/exam/exam-detail/exam-detail.component';
+import { MyCoursesComponent } from './components/course/my-courses/my-courses.component';
 
 const routers: Routes = [
   { path: 'welcome', component: WelcomeComponent,},
@@ -76,7 +77,8 @@ const routers: Routes = [
     AddExamComponent,
     ExamlistComponent,
     ExamEditComponent,
-    ExamDetailComponent
+    ExamDetailComponent,
+    MyCoursesComponent
   ],
   imports: [
     BrowserModule,
