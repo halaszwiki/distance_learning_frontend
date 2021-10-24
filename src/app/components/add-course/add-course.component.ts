@@ -19,14 +19,15 @@ export class AddCourseComponent implements OnInit {
   startSelected: Number;
   endSelected: Number;
   errorMessage = '';
+  isIdPresent: boolean;
 
   constructor(private _courseService: CourseService,
     private _router: Router,
     private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const isIdPresent = this._activatedRoute.snapshot.paramMap.has('id');
-    if(isIdPresent){
+     this.isIdPresent = this._activatedRoute.snapshot.paramMap.has('id');
+    if(this.isIdPresent){
       const id = +this._activatedRoute.snapshot.paramMap.get('id');
       this._courseService.getCourse(id).subscribe(
         data => {

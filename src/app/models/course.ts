@@ -1,3 +1,4 @@
+import { CommentPayload } from './commentPayload';
 import { User } from './user';
 
 export class Course {
@@ -10,5 +11,5 @@ export class Course {
     start: Number;
     end: Number;
     usersInCourse: User[];
-    comments: Comment[];
+    comments: CommentPayload[];
 }

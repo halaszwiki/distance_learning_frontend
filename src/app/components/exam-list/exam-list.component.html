@@ -1,0 +1,41 @@
+<app-header></app-header>
+<body>
+
+<div class="search">
+  <input class="search-box" type="text" placeholder="Search by exam name" [(ngModel)]="searchBox"/> 
+</div>
+
+  
+<table>
+  <thead>
+      <tr>
+        <th (click)="sort('name')">Name <i class="fa fa-sort"></i> </th>
+        <th (click)="sort('degreeLevel')">Degree level <i class="fa fa-sort"></i></th>
+        <th (click)="sort('semester')">Number of semester <i class="fa fa-sort"></i></th>
+        <th >Options</th>
+      </tr>
+    </thead>
+  <tbody>
+      <tr *ngFor="let exam of exams | coursesearchfilter: searchBox | orderBy : key ">
+        <td>
+          {{ exam.name }}
+        </td>
+        <td>
+          {{ exam.degreeLevel }}
+        </td>
+        <td>
+          {{ exam.semester }}
+        </td>
+        <td>
+            <button *ngIf = "app.isTeacher" routerLink="/editexam/{{exam.id}}">Edit</button>
+            <button *ngIf = "app.isTeacher" (click)="deleteExam(exam.id)">Delete</button>
+            <button routerLink="/examdetail/{{exam.id}}">Details</button>
+        </td>
+      </tr>
+  </tbody>
+</table>
+
+</body>
+
+
+

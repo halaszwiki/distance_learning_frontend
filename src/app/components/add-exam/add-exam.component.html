@@ -1,0 +1,91 @@
+<app-header></app-header>
+
+<body>
+
+    <form ngNativeValidate (ngSubmit)="saveExam()">
+    
+    <h2>Exam details</h2>
+    
+    <div>
+    <h3>Name: </h3>
+    <input required class="exam-name"
+        type="text"
+        name="exam"
+        [(ngModel)]="exam.name"
+        placeholder="Enter new exam name" 
+      />
+    </div>
+    
+    
+    <div required>
+      <h3> Degree level: </h3>
+      <label>
+        <input  class="radio" [(ngModel)]="exam.degreeLevel" type="radio" name="level" required value="Bsc" /> BSc
+      </label>
+      <label>
+        <input class="radio" [(ngModel)]="exam.degreeLevel" type="radio"  name="level" required value="Msc"/> MSc
+      </label>
+    </div>
+    
+    <div required>
+      <h3> Program: </h3>
+      <label>
+        <input  class="radio" [(ngModel)]="exam.program" type="radio" name="program" required value="Electrical Engineering" /> Electrical Engineering
+      </label>
+      <label>
+        <input class="radio" [(ngModel)]="exam.program" type="radio"  name="program" required value="Computer Engineering"/> Computer Engineering
+      </label>
+    </div>
+    
+    
+    <div>
+      <h3> Number of semester: </h3>
+      <select required id="semester" name="semester" [(ngModel)]="exam.semester" >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+    </div>
+    
+    <div class="days">
+      <h3>On these days: </h3>
+      <ng-multiselect-dropdown
+      id="days"
+      name="days"
+      [data]="days"
+      [(ngModel)]="exam.days"
+      [settings]="dropdownSettings"
+      (onSelect)="onDaySelected($event)"
+      (onDeselect)="onDayDeselected($event)"
+    >
+    </ng-multiselect-dropdown>
+    </div>
+    
+    <div>
+      <h3> The class starts at: </h3>
+      <select required id="start" name="start" [(ngModel)]="startSelected">
+        <option *ngFor="let start of start" [value]="start">{{start}}:15</option>
+      </select>
+    </div>
+    
+    <div>
+      <h3> The class ends at: </h3>
+      <select required id="end" name="end" [(ngModel)]="endSelected">
+        <option *ngFor="let end of end" [value]="end">{{end}}:15</option>
+      </select>
+    </div>
+    
+    <div>
+      <p>{{errorMessage}}</p>
+    </div>
+    
+    
+    <button type="submit">Add exam</button>
+    
+    </form>
+    
+    </body>
+    

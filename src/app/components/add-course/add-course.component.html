@@ -3,7 +3,7 @@
 
 <form ngNativeValidate (ngSubmit)="saveCourse()">
 
-<h2>Course details</h2>
+<h2>{{ this.isIdPresent == true ? 'Edit course' : 'Add course'}}</h2>
 
 <div>
 <h3>Name: </h3>
@@ -82,7 +82,7 @@
 </div>
 
 
-<button type="submit">Add course</button>
+<button type="submit">{{ this.isIdPresent == true ? 'Edit course' : 'Add course'}}</button>
 
 </form>
 

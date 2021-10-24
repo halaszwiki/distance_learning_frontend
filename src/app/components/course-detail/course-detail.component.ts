@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Course } from 'src/app/models/course';
 import { User } from 'src/app/models/user';
-import { CourseToUser } from 'src/app/models/courseToUser';
+import { CoursePayload } from 'src/app/models/coursePayload';
 
 import { CourseService } from 'src/app/services/course.service';
 import { CommentService } from 'src/app/services/comment.service';
@@ -21,6 +21,7 @@ export class CourseDetailComponent implements OnInit {
   course: Course = new Course();
   courseId: number;
   user: User = new User();
+  users: User[] = [];
   comments: CommentPayload[] = [];
   comment: CommentPayload = new CommentPayload();
   commentForm: FormGroup;
@@ -46,15 +47,24 @@ export class CourseDetailComponent implements OnInit {
         })
     }
     this.getCommentsForCourse();
+    this.getUsersOnCourse();
   }
 
 addCourseToUser(){
   this.user = this.app.getUser()
-  this._courseService.addCourseToUser(new CourseToUser(this.user.id, this.course)).subscribe(
+  this._courseService.addCourseToUser(new CoursePayload(this.user.id, this.course)).subscribe(
     data => {
       console.log("userid: ", this.user.id);
       },)
 }  
+
+private getUsersOnCourse() {
+  this._courseService.getUsersOnCourse(this.courseId).subscribe(data => {
+    this.users = data;
+  }, error => {
+    throwError(error);
+  });
+}
 
 private getCommentsForCourse() {
   this._commentService.getCommentsFromCourse(this.courseId).subscribe(data => {

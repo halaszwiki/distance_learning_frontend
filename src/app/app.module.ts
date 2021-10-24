@@ -31,6 +31,10 @@ import { StompService } from 'ng2-stomp-service';
 import { RoleGuard } from './helpers/role-guard.service';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AddExamComponent } from './components/add-exam/add-exam.component';
+import { ExamlistComponent } from './components/exam-list/exam-list.component';
+import { ExamEditComponent } from './components/exam-edit/exam-edit.component';
+import { ExamDetailComponent } from './components/exam-detail/exam-detail.component';
 
 const routers: Routes = [
   { path: 'welcome', component: WelcomeComponent,},
@@ -45,6 +49,10 @@ const routers: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'addexam/:id', component: AddExamComponent, canActivate: [AuthGuard, RoleGuard]},
+  {path: 'exams', component: ExamlistComponent, canActivate: [AuthGuard]},
+  {path: 'editexam/:id', component: ExamEditComponent, canActivate: [AuthGuard, RoleGuard]},
+  {path: 'examdetail/:id', component: ExamDetailComponent, canActivate: [AuthGuard]},
   // otherwise redirect to home
   { path: '**', redirectTo: 'welcome' }
 ];
@@ -64,7 +72,11 @@ const routers: Routes = [
     ChatComponent,
     WelcomeComponent,
     CourseDetailComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddExamComponent,
+    ExamlistComponent,
+    ExamEditComponent,
+    ExamDetailComponent
   ],
   imports: [
     BrowserModule,

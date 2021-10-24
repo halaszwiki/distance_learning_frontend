@@ -1,4 +1,5 @@
 import { Course } from "./course";
+import { Exam } from "./exam";
 
 export class User {
 
@@ -8,4 +9,5 @@ export class User {
 	email: string;
 	password: string;
 	courses: Course[];
+	exams: Exam[];
 }

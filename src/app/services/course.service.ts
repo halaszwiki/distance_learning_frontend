@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Course } from '../models/course';
 import { map } from 'rxjs/operators'
 import { Observable } from 'rxjs';
-import { CourseToUser} from '../models/courseToUser';
+import { CoursePayload} from '../models/coursePayload';
+import { User } from '../models/user';
 
 
 @Injectable({
@@ -35,7 +36,13 @@ export class CourseService {
     return this._httpClient.delete(`${this.getUrl}/${id}`, {responseType: 'text'});
   }
 
-  addCourseToUser(userIdAndCourse: CourseToUser): Observable<CourseToUser>{ 
-    return this._httpClient.post<CourseToUser>(`${this.getUrl}/addCourseToUser`, userIdAndCourse);
+  addCourseToUser(coursePayload: CoursePayload): Observable<CoursePayload>{ 
+    return this._httpClient.post<CoursePayload>(`${this.getUrl}/addCourseToUser`, coursePayload);
+  }
+
+  getUsersOnCourse(id: number): Observable<User[]>{ 
+    return this._httpClient.get<User[]>(`${this.getUrl}/users/${id}`).pipe(
+      map(response => response)
+    );
   }
 }
