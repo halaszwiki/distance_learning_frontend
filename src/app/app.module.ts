@@ -35,8 +35,8 @@ import { AddExamComponent } from './components/exam/add-exam/add-exam.component'
 import { ExamlistComponent } from './components/exam/exam-list/exam-list.component';
 import { ExamEditComponent } from './components/exam/exam-edit/exam-edit.component';
 import { ExamDetailComponent } from './components/exam/exam-detail/exam-detail.component';
-import { MyCoursesComponent } from './components/course/my-courses/my-courses.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { MyCoursesComponent } from './components/my-courses/my-courses.component';
 
 const routers: Routes = [
   { path: 'welcome', component: WelcomeComponent,},
@@ -81,8 +81,8 @@ const routers: Routes = [
     ExamlistComponent,
     ExamEditComponent,
     ExamDetailComponent,
-    MyCoursesComponent,
-    AddUserComponent
+    AddUserComponent,
+    MyCoursesComponent
   ],
   imports: [
     BrowserModule,

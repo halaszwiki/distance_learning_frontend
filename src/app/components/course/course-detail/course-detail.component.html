@@ -15,9 +15,9 @@
         <h3>{{course.start}}:15</h3>
         <h3 class="title">End</h3>
         <h3>{{course.end}}:15</h3>
-        <h3 class="title">Students on the course:</h3>
+        <h3 class="title">Users on the course:</h3>
         <li  *ngFor="let user of users"> 
-             {{user.username}}
+              {{ areThereUsers ? user.username : 'No one is on the course.'}}
          </li>
         <button (click)="addCourseToUser()">Add course</button>
 

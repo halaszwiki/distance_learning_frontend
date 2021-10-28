@@ -22,6 +22,7 @@ export class CourseDetailComponent implements OnInit {
   courseId: number;
   user: User = new User();
   users: User[] = [];
+  areThereUsers = false;
   comments: CommentPayload[] = [];
   comment: CommentPayload = new CommentPayload();
   commentForm: FormGroup;
@@ -61,6 +62,9 @@ addCourseToUser(){
 private getUsersOnCourse() {
   this._courseService.getUsersOnCourse(this.courseId).subscribe(data => {
     this.users = data;
+    if(this.users.length != null){
+      this.areThereUsers = true;
+    }
   }, error => {
     throwError(error);
   });

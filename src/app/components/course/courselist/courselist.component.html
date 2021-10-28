@@ -27,9 +27,6 @@
           {{ course.semester }}
         </td>
         <td>
-            <button *ngIf = "app.isTeacher" routerLink="/editcourse/{{course.id}}">Edit</button>
-            <button *ngIf = "app.isTeacher" (click)="deleteCourse(course.id)">Delete</button>
-            <button *ngIf = "app.isTeacher" routerLink="/addexam/{{course.id}}">Add exam</button>
             <button routerLink="/coursedetail/{{course.id}}">Details</button>
         </td>
       </tr>
