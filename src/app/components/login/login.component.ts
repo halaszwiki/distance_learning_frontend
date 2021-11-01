@@ -39,7 +39,9 @@ export class LoginComponent implements OnInit {
         this.goToHome();
       },
       err => {
-        console.error('An error occurred:', err.error);
+        console.error(err.error);
+        this.errorMessage = err.error.message;
+        console.log(this.errorMessage);
       }
     );
   }

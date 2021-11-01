@@ -39,10 +39,12 @@ export class ExamDetailComponent implements OnInit {
 
 registerUserToExam(){
   this.user = this.app.getUser();
-  this._examService.addExamToUser(new ExamPayload(this.user.id, this.exam)).subscribe(
+  this._examService.addExamToUser(new ExamPayload(this.user.user_id, this.exam)).subscribe(
     data => {
-      console.log("userid: ", this.user.id);
+      console.log("userid: ", this.user.user_id);
+      this.getUsersOnExam();
       },)
+      
   }
   
   private getUsersOnExam() {

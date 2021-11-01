@@ -30,13 +30,14 @@ import { AuthGuard } from './helpers/auth-guard.service';
 import { StompService } from 'ng2-stomp-service';
 import { RoleGuard } from './helpers/role-guard.service';
 import { CourseDetailComponent } from './components/course/course-detail/course-detail.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './components/my-profile/profile/profile.component';
 import { AddExamComponent } from './components/exam/add-exam/add-exam.component';
 import { ExamlistComponent } from './components/exam/exam-list/exam-list.component';
 import { ExamEditComponent } from './components/exam/exam-edit/exam-edit.component';
 import { ExamDetailComponent } from './components/exam/exam-detail/exam-detail.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { MyCoursesComponent } from './components/my-courses/my-courses.component';
+import { EditProfileComponent } from './components/my-profile/edit-profile/edit-profile.component';
 
 const routers: Routes = [
   { path: 'welcome', component: WelcomeComponent,},
@@ -57,6 +58,7 @@ const routers: Routes = [
   {path: 'examdetail/:id', component: ExamDetailComponent, canActivate: [AuthGuard]},
   {path: 'mycourses', component: MyCoursesComponent, canActivate: [AuthGuard, RoleGuard]},
   {path: 'users/:id', component: AddUserComponent, canActivate: [AuthGuard, RoleGuard]},
+  {path: 'editprofile/:id', component: EditProfileComponent, canActivate: [AuthGuard]},
   // otherwise redirect to home
   { path: '**', redirectTo: 'welcome' }
 ];
@@ -82,7 +84,8 @@ const routers: Routes = [
     ExamEditComponent,
     ExamDetailComponent,
     AddUserComponent,
-    MyCoursesComponent
+    MyCoursesComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@
         <h3>{{exam.end}}:15</h3>
         <h3 class="title">Students on the exam:</h3>
         <li  *ngFor="let user of users"> 
-             {{user.username}}
+             {{user.username}} <button (click)="addGrate()">Add grade</button>
          </li>
         <button (click)="registerUserToExam()">Register</button>
     

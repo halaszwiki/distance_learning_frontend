@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div class="card">
+    <div class="container">
+        <form ngNativeValidate (ngSubmit)="saveUser()">
+            <div>
+                <h3 class="title">Username:</h3>
+                <input required class="user-data"
+                    type="text"
+                    name="user.username"
+                    [(ngModel)]="user.username" 
+                  />
+                </div>
+            <div>
+                <h3 class="title">E-mail address:</h3>
+                <input required class="user-data"
+                    type="text"
+                    name="user.email"
+                    [(ngModel)]="user.email"
+                />
+                </div>
+            <div>
+                <p>{{errorMessage}}</p>
+              </div>
+
+        <button type="submit">Save</button>
+    </form>
+        
+    </div>
+</div>

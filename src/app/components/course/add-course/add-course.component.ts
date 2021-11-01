@@ -47,7 +47,7 @@ export class AddCourseComponent implements OnInit {
   saveCourse() {
       this.course.start = this.startSelected;
       this.course.end = this.endSelected;
-      this.course.creatorId = this.app.getUser().id;
+      this.course.creatorId = this.app.getUser().user_id;
       this._courseService.saveCourse(this.course).subscribe(
         data => {
           console.log('response', data);
