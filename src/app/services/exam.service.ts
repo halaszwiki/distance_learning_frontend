@@ -4,6 +4,7 @@ import { Observable } from "rxjs/internal/Observable";
 import { map } from "rxjs/internal/operators/map";
 import { Exam } from "../models/exam";
 import { ExamPayload} from '../models/examPayload';
+import { Grade } from "../models/grade";
 import { User } from "../models/user";
 
 @Injectable({
@@ -39,9 +40,23 @@ import { User } from "../models/user";
       return this._httpClient.post<ExamPayload>(`${this.getUrl}/addExamToUser`, examPayload);
     }
 
+    removeUserFromExam(examPayload: ExamPayload): Observable<ExamPayload>{ 
+      return this._httpClient.post<ExamPayload>(`${this.getUrl}/removeFromExam`, examPayload);
+    }
+
     getUsersOnExam(id: number): Observable<User[]>{ 
       return this._httpClient.get<User[]>(`${this.getUrl}/users/${id}`).pipe(
         map(response => response)
       );
+    }
+
+    getGradeableStudents(id: number): Observable<User[]>{ 
+      return this._httpClient.get<User[]>(`${this.getUrl}/users/${id}/grade`).pipe(
+        map(response => response)
+      );
+    }
+
+    addGrade(grade: Grade): Observable<Grade>{ 
+      return this._httpClient.post<Grade>(`${this.getUrl}/addGrade`, grade);
     }
   }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Exam } from 'src/app/models/exam';
+import { ExamPayload } from 'src/app/models/examPayload';
+import { User } from 'src/app/models/user';
 import { CourseService } from 'src/app/services/course.service';
 import { ExamService } from 'src/app/services/exam.service';
 
@@ -15,6 +17,7 @@ export class ExamlistComponent implements OnInit {
   exams: Exam[] = [];
   searchBox: string;
   key: string = "semester";
+  exam: Exam = new Exam();
 
   constructor(private _examService: ExamService,
     private _router: Router, 

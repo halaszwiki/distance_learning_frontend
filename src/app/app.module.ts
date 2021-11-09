@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon"
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -38,6 +39,8 @@ import { ExamDetailComponent } from './components/exam/exam-detail/exam-detail.c
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { MyCoursesComponent } from './components/my-courses/my-courses.component';
 import { EditProfileComponent } from './components/my-profile/edit-profile/edit-profile.component';
+import { GradeComponent } from './components/grade/grade.component';
+import { VideoComponent } from './components/video/video.component';
 
 const routers: Routes = [
   { path: 'welcome', component: WelcomeComponent,},
@@ -56,7 +59,7 @@ const routers: Routes = [
   {path: 'exams', component: ExamlistComponent, canActivate: [AuthGuard]},
   {path: 'editexam/:id', component: ExamEditComponent, canActivate: [AuthGuard, RoleGuard]},
   {path: 'examdetail/:id', component: ExamDetailComponent, canActivate: [AuthGuard]},
-  {path: 'mycourses', component: MyCoursesComponent, canActivate: [AuthGuard, RoleGuard]},
+  {path: 'mycourses/:id', component: MyCoursesComponent, canActivate: [AuthGuard, RoleGuard]},
   {path: 'users/:id', component: AddUserComponent, canActivate: [AuthGuard, RoleGuard]},
   {path: 'editprofile/:id', component: EditProfileComponent, canActivate: [AuthGuard]},
   // otherwise redirect to home
@@ -85,7 +88,9 @@ const routers: Routes = [
     ExamDetailComponent,
     AddUserComponent,
     MyCoursesComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    GradeComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,
@@ -102,9 +107,11 @@ const routers: Routes = [
     Ng2OrderModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatDialogModule
   ],
   providers: [authInterceptorProviders, AuthGuard, RoleGuard, StompService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [GradeComponent],
 })
 export class AppModule { }
 

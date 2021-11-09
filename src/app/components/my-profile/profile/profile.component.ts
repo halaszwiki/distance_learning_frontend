@@ -13,23 +13,14 @@ import { UserService } from 'src/app/services/user.service';
 export class ProfileComponent implements OnInit {
 
   user: User = new User();
-  id: number;
 
-  constructor(private _userService: UserService, private _activatedRoute: ActivatedRoute) { }
+  constructor(private _userService: UserService, private _activatedRoute: ActivatedRoute, private app: AppComponent) { }
   
   ngOnInit(): void {
     const isIdPresent = this._activatedRoute.snapshot.paramMap.has('id');
     if(isIdPresent){
-      const id = +this._activatedRoute.snapshot.paramMap.get('id');
-        this.getCurrentUser(id);
-       
+      this.user = this.app.getUser();
     }
-  }
-
-  getCurrentUser(id: number) {
-    this._userService.getUser(id).subscribe(
-      data => this.user = data
-    )
   }
 }
 

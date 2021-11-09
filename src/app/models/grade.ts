@@ -2,12 +2,12 @@ import { User } from "./user";
 
 
 export class Grade {
-user: User;
+username: string;
 grade: number;
 courseId: number;
 
-constructor(user: User, courseId: number, grade: number){
-    this.user = user;
+constructor(username: string, courseId: number, grade: number){
+    this.username = username;
     this.courseId = courseId;
     this.grade = grade;
     }

@@ -15,10 +15,15 @@
         <h3>{{exam.start}}:15</h3>
         <h3 class="title">End</h3>
         <h3>{{exam.end}}:15</h3>
-        <h3 class="title">Students on the exam:</h3>
+        <h3 *ngIf = "!isUsersEmpty" class="title">Students on the exam:</h3>
         <li  *ngFor="let user of users"> 
-             {{user.username}} <button (click)="addGrate()">Add grade</button>
+           {{user.username}}
          </li>
-        <button (click)="registerUserToExam()">Register</button>
+         
+        <button *ngIf = "!app.isTeacher && canRegister()" (click)="registerUserToExam()">Register</button>
+        <button *ngIf = "app.isTeacher && !isUsersEmpty" (click)="openDialog()">Add grade</button>
+        <button *ngIf = "!app.isTeacher && isExamRemovable()" (click)="removeExam()">Remove exam</button>
+
+        <p>{{message}}</p>
     
 </div>

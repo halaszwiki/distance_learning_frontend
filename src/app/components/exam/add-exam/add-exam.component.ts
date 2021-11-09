@@ -41,7 +41,7 @@ export class AddExamComponent implements OnInit {
           this.exam.name = this.course.name + " exam";
           this.exam.program = this.course.program;
           this.exam.semester = this.course.semester;
-          this.exam.creatorId = this.app.getUser().user_id;
+          this.exam.creatorId = this.app.getUser().id;
         });
     }
 

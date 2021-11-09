@@ -35,7 +35,7 @@ export class AddCourseComponent implements OnInit {
         data => {
           this.course = data;
           this.startSelected = this.course.start;
-          this.endSelected = this.course.end;
+          this.endSelected = this.course.end;   
         });
     }
 
@@ -47,7 +47,8 @@ export class AddCourseComponent implements OnInit {
   saveCourse() {
       this.course.start = this.startSelected;
       this.course.end = this.endSelected;
-      this.course.creatorId = this.app.getUser().user_id;
+      this.course.creatorId = this.app.getUser().id;
+      console.log(this.course.creatorId);
       this._courseService.saveCourse(this.course).subscribe(
         data => {
           console.log('response', data);

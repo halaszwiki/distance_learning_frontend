@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Course } from 'src/app/models/course';
 import { CourseService } from 'src/app/services/course.service';
@@ -13,13 +14,21 @@ export class MyCoursesComponent implements OnInit {
   courses: Course[] = [];
   searchBox: string;
   key: string = "semester";
+  userid: number;
 
   constructor(
     private _courseService: CourseService,
-    public app: AppComponent) { }
+    public app: AppComponent,
+    private _activatedRoute: ActivatedRoute
+    ) { }
+    
 
   ngOnInit(): void {
-    this.listCourses();
+    const isIdPresent = this._activatedRoute.snapshot.paramMap.has('id');
+    if(isIdPresent){
+      this.userid = +this._activatedRoute.snapshot.paramMap.get('id');
+    }
+    this.listCourses(this.userid);
   }
 
   sort(key: string){
@@ -33,13 +42,13 @@ export class MyCoursesComponent implements OnInit {
   deleteCourse(id: number){
     this._courseService.deleteCourse(id).subscribe(
       data => { console.log('deleted response', data);
-    this.listCourses();
+    this.listCourses(this.userid);
       }
     )
   }
 
-  listCourses(){
-    this._courseService.getMyCourses(this.app.getUser().user_id).subscribe(
+  listCourses(id: number){
+    this._courseService.getMyCourses(id).subscribe(
       data => this.courses = data
     )
   }

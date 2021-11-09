@@ -39,7 +39,7 @@ export class MyCoursesComponent implements OnInit {
   }
 
   listCourses(){
-    this._courseService.getMyCourses(this.app.getUser().user_id).subscribe(
+    this._courseService.getMyCourses(this.app.getUser().id).subscribe(
       data => this.courses = data
     )
   }

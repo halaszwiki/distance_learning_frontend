@@ -53,9 +53,9 @@ export class CourseDetailComponent implements OnInit {
 
 addCourseToUser(){
   this.user = this.app.getUser()
-  this._courseService.addCourseToUser(new CoursePayload(this.user.user_id, this.course)).subscribe(
+  this._courseService.addCourseToUser(new CoursePayload(this.user.id, this.course)).subscribe(
     data => {
-      console.log("userid: ", this.user.user_id);
+      console.log("userid: ", this.user.id);
       this.getUsersOnCourse();
       },)
 }  

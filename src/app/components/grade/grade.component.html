@@ -1,0 +1,28 @@
+
+<form ngNativeValidate (ngSubmit)="addGrade()">
+
+    <h2>Grade</h2>
+
+    <div>
+        <h3> User: </h3>
+        <select required id="username" name="username" [(ngModel)]="username">
+          <option *ngFor="let student of students" [value]="student.username">{{student.username}}</option>
+        </select>
+      </div>
+
+      <h4>{{data.exam.name}}</h4>
+
+      <div>
+        <h3> Grade: </h3>
+        <select required id="grade" name="grade" [(ngModel)]="grade" >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <button type="submit">Add grade</button>
+
+</form>

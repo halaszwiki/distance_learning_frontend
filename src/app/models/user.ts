@@ -5,7 +5,7 @@ import { Grade } from "./grade";
 
 export class User {
 
-    user_id: number;
+    id: number;
 	roles: string[];
 	username: string;
 	email: string;

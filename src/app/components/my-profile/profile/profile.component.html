@@ -2,11 +2,10 @@
 
 <div class="card">
     <div class="container">
-        <button class="editButton" routerLink="/editprofile/{{user.user_id}}">Edit</button>
         <h1>Profile details</h1>
         <h3 class="title">Username</h3>
         <h3>{{user.username}}</h3>
-        <h3 class="title">E-mail address</h3>
+        <h3 class="title">E-mail address <button class="editButton" routerLink="/editprofile/{{user.id}}">Edit</button></h3>
         <h3>{{user.email}}</h3>
         <h3 class="title">Courses</h3>
         <li  *ngFor="let course of user.courses">

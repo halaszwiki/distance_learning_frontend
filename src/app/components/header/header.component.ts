@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router,
     public app: AppComponent) {
       this.user = app.getUser();
-      console.log(this.user);
      }
 
 
