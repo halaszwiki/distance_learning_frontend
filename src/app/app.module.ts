@@ -8,6 +8,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon"
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {ClipboardModule} from '@angular/cdk/clipboard';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -41,6 +45,9 @@ import { MyCoursesComponent } from './components/my-courses/my-courses.component
 import { EditProfileComponent } from './components/my-profile/edit-profile/edit-profile.component';
 import { GradeComponent } from './components/grade/grade.component';
 import { VideoComponent } from './components/video/video.component';
+import { CallInfoDialogComponents } from './callinfo-dialog/callinfo-dialog.component';
+import { VideoService } from './services/video.service';
+
 
 const routers: Routes = [
   { path: 'welcome', component: WelcomeComponent,},
@@ -62,6 +69,7 @@ const routers: Routes = [
   {path: 'mycourses/:id', component: MyCoursesComponent, canActivate: [AuthGuard, RoleGuard]},
   {path: 'users/:id', component: AddUserComponent, canActivate: [AuthGuard, RoleGuard]},
   {path: 'editprofile/:id', component: EditProfileComponent, canActivate: [AuthGuard]},
+  {path: 'video', component: VideoComponent, canActivate: [AuthGuard]},
   // otherwise redirect to home
   { path: '**', redirectTo: 'welcome' }
 ];
@@ -90,7 +98,8 @@ const routers: Routes = [
     MyCoursesComponent,
     EditProfileComponent,
     GradeComponent,
-    VideoComponent
+    VideoComponent,
+    CallInfoDialogComponents
   ],
   imports: [
     BrowserModule,
@@ -107,11 +116,15 @@ const routers: Routes = [
     Ng2OrderModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ClipboardModule,
+    MatSnackBarModule
   ],
-  providers: [authInterceptorProviders, AuthGuard, RoleGuard, StompService],
+  providers: [authInterceptorProviders, AuthGuard, RoleGuard, StompService, VideoService],
   bootstrap: [AppComponent],
-  entryComponents: [GradeComponent],
+  entryComponents: [GradeComponent, CallInfoDialogComponents],
 })
 export class AppModule { }
 

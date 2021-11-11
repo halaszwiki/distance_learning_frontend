@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Stomp } from '@stomp/stompjs';
+import { Observable } from 'rxjs';
 import * as SockJS from 'sockjs-client';
 import { ChatMessage } from '../models/chatMessage';
+import { VideoMessage } from '../models/videoMessage';
 import { TokenStorageService } from './token-storage.service';
 
 @Injectable({
@@ -14,6 +16,7 @@ export class WebSocketService {
   token = this.tokenService.getToken();
   stompClient;
   chatMessage: ChatMessage[] = [];
+  videoMessage: VideoMessage;
 
   connect() {
     const ws = new SockJS('http://localhost:8080/socket');
@@ -30,5 +33,13 @@ export class WebSocketService {
   
   sendMessage(chatMessage){
     this.stompClient.send('/app/send/message' , {}, JSON.stringify(chatMessage));
+  }
+
+  sendVideoMessage(payload){
+    this.stompClient.send('/app/send/videomessage' , {}, JSON.stringify(payload));
+  }
+
+  getMessages(): Observable<any> {
+    return this.stompClient.fromEvent('message');
   }
 }
