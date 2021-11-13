@@ -16,12 +16,12 @@ export class AddExamComponent implements OnInit {
   course: Course = new Course();
   exam: Exam = new Exam();
   errorMessage = '';
-  days: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
   start: Number[] = [8, 10, 12, 14, 16];
   end: Number[] = [10, 12, 14, 16, 18];
   dropdownSettings = {};
   startSelected: Number;
   endSelected: Number;
+  minDate = new Date();
 
   constructor(private _examService: ExamService, 
     private app: AppComponent,
@@ -66,18 +66,9 @@ export class AddExamComponent implements OnInit {
       )
 }
 
-onDaySelected(day){
-  const index: number = this.exam.days.indexOf(day);
-  if (index == -1) {
-      this.exam.days.push(day);
-  }  
+dateFilter(d: Date): boolean {
+  const day = d.getDay();
+  // Prevent Saturday and Sunday from being selected.
+  return day !== 0 && day !== 6;
 }
-
-onDayDeselected(day){
-  const index: number = this.exam.days.indexOf(day);
-  if (index !== -1) {
-      this.exam.days.splice(index, 1);
-  }   
-}
-
 }

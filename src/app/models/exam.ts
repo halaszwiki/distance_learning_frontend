@@ -6,7 +6,7 @@ export class Exam {
     semester: number;
     degreeLevel: string;
     program: string;
-    days: string[];
+    date: Date;
     start: Number;
     end: Number;
     usersInExam: User[];

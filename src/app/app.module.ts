@@ -12,6 +12,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -120,7 +122,9 @@ const routers: Routes = [
     MatFormFieldModule,
     MatInputModule,
     ClipboardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [authInterceptorProviders, AuthGuard, RoleGuard, StompService, VideoService],
   bootstrap: [AppComponent],
