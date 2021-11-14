@@ -1,0 +1,126 @@
+<app-header></app-header>
+<body>
+
+<div class="container">
+<div class = "row">
+  <div class = "col">
+    <h2>Monday</h2>
+    <table>
+      <thead>
+          <tr>
+            <th>Course</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+      <tbody>
+          <tr *ngFor="let course of monday ">
+            <td>
+              {{ course.name}}
+            </td>
+            <td>
+              {{ course.start}}:15 - {{ course.end}}:00
+            </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+<div class = "col">
+  <h2>Tuesday</h2>
+    <table>
+      <thead>
+          <tr>
+            <th>Course</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+      <tbody>
+          <tr *ngFor="let course of tuesday ">
+            <td>
+              {{ course.name}}
+            </td>
+            <td>
+              {{ course.start}}:15 - {{ course.end}}:00
+            </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+</div>
+
+<div class="row">
+<div class = "col">
+  <h2>Wednesday</h2>
+    <table>
+      <thead>
+          <tr>
+            <th>Course</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+      <tbody>
+          <tr *ngFor="let course of wednesday ">
+            <td>
+              {{ course.name}}
+            </td>
+            <td>
+              {{ course.start}}:15 - {{ course.end}}:00
+            </td>
+          </tr>
+      </tbody>
+    </table>
+</div>
+
+
+
+<div class="col">
+  <h2>Thursday</h2>
+  <table>
+    <thead>
+        <tr>
+          <th>Course</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+    <tbody>
+        <tr *ngFor="let course of thursday ">
+          <td>
+            {{ course.name}}
+          </td>
+          <td>
+            {{ course.start}}:15 - {{ course.end}}:00
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+
+<div class="row">
+<div class="col">
+  <h2>Friday</h2>
+  <table>
+    <thead>
+        <tr>
+          <th>Course</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+    <tbody>
+        <tr *ngFor="let course of friday ">
+          <td>
+            {{ course.name}}
+          </td>
+          <td>
+            {{ course.start}}:15 - {{ course.end}}:00
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+</div>
+
+</body>

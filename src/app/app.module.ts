@@ -14,6 +14,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { CommonModule } from "@angular/common";
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -47,8 +48,9 @@ import { MyCoursesComponent } from './components/my-courses/my-courses.component
 import { EditProfileComponent } from './components/my-profile/edit-profile/edit-profile.component';
 import { GradeComponent } from './components/grade/grade.component';
 import { VideoComponent } from './components/video/video.component';
-import { CallInfoDialogComponents } from './callinfo-dialog/callinfo-dialog.component';
+import { CallInfoDialogComponents } from './components/callinfo-dialog/callinfo-dialog.component';
 import { VideoService } from './services/video.service';
+import { TimetableComponent } from './components/timetable/timetable.component';
 
 
 const routers: Routes = [
@@ -72,6 +74,7 @@ const routers: Routes = [
   {path: 'users/:id', component: AddUserComponent, canActivate: [AuthGuard, RoleGuard]},
   {path: 'editprofile/:id', component: EditProfileComponent, canActivate: [AuthGuard]},
   {path: 'video', component: VideoComponent, canActivate: [AuthGuard]},
+  {path: 'timetable/:id', component: TimetableComponent, canActivate: [AuthGuard]},
   // otherwise redirect to home
   { path: '**', redirectTo: 'welcome' }
 ];
@@ -101,7 +104,8 @@ const routers: Routes = [
     EditProfileComponent,
     GradeComponent,
     VideoComponent,
-    CallInfoDialogComponents
+    CallInfoDialogComponents,
+    TimetableComponent
   ],
   imports: [
     BrowserModule,
@@ -124,7 +128,8 @@ const routers: Routes = [
     ClipboardModule,
     MatSnackBarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    CommonModule
   ],
   providers: [authInterceptorProviders, AuthGuard, RoleGuard, StompService, VideoService],
   bootstrap: [AppComponent],

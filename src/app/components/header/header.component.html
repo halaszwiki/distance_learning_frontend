@@ -12,6 +12,9 @@
           <a *ngIf="app.isLoggedIn" class="nav-link" routerLink="/courses">Courses</a>
         </li>
         <li class="nav-item active">
+          <a *ngIf="app.isLoggedIn" class="nav-link" routerLink="/timetable/{{user.id}}">Timetable</a>
+        </li>
+        <li class="nav-item active">
           <a *ngIf="app.isLoggedIn && app.isTeacher" class="nav-link" routerLink="/mycourses/{{user.id}}">My courses</a>
         </li>
         <li class="nav-item active">

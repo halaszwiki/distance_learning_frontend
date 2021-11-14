@@ -28,6 +28,12 @@ export class CourseService {
     )
   }
 
+  getTimetable(id: number): Observable<Course[]>{
+    return this._httpClient.get<Course[]>(`${this.getUrl}/timetable/${id}`).pipe(
+      map(response => response)
+    )
+  }
+
   saveCourse(course: Course): Observable<Course>{
     return this._httpClient.post<Course>(`${this.getUrl}/list`, course);
   }

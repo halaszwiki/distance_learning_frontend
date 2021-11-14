@@ -12,5 +12,5 @@ export class User {
 	password: string;
 	courses: Course[];
 	exams: Exam[];
-	grade: Grade[];
+	grades: Grade[];
 }
