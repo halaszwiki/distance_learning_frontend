@@ -1,5 +1,19 @@
 <app-header></app-header>
 
+
 <h1>Welcome to my Distance learning application!</h1>
 
-<h2>Now you can use the whole system.</h2>
+<div class="center">
+    <img src="assets/school.png">
+</div>
+
+
+<h2>Just a few funcionality:</h2>
+
+
+
+<div class="buttonlist">
+        <div class="button" routerLink="/courses"> Courses <br/> <span style="font-style: italic;"> Here you can see all the created courses.</span> </div>
+        <div class="button" routerLink="/timetable/{{user.id}}"> Timetable <br/> <span style="font-style: italic;"> Here you can see your courses broken down by days. </span> </div>
+        <div class="button" routerLink="/exams"> Exams <br/> <span style="font-style: italic;"> Here you can see the exams you can choose from. </span> </div>
+</div>

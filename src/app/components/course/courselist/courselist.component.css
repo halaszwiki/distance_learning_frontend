@@ -66,6 +66,7 @@ button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin-right: 5px;
 }
 
 button:hover {

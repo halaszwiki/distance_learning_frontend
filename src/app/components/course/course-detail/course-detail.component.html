@@ -19,7 +19,10 @@
         <li  *ngFor="let user of users"> 
               {{ areThereUsers ? user.username : 'No one is on the course.'}}
          </li>
-        <button (click)="addCourseToUser()">Add course</button>
+        <button *ngIf = "!app.isTeacher && canAdd()" (click)="addCourseToUser()">Add course</button>
+        <button *ngIf = "!app.isTeacher && isRemovable()" (click)="removeCourse()">Remove course</button>
+
+        <p>{{message}}</p>
 
         <div class="post-comment">
             <div class="commentTitle">

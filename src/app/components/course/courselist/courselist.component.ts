@@ -16,6 +16,7 @@ export class CourselistComponent implements OnInit {
   courses: Course[] = [];
   searchBox: string;
   key: string = "semester";
+  searchparam= "BSc";
 
   constructor(private _courseService: CourseService,
     private _router: Router, public app: AppComponent) { }

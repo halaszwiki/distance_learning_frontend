@@ -26,11 +26,12 @@ export class CourseDetailComponent implements OnInit {
   comments: CommentPayload[] = [];
   comment: CommentPayload = new CommentPayload();
   commentForm: FormGroup;
+  message: string = "";
 
   constructor(private _courseService: CourseService,
               private _commentService: CommentService,
               private _activatedRoute: ActivatedRoute,
-              private app: AppComponent) { 
+              public app: AppComponent) { 
 
               this.commentForm = new FormGroup({
                 text: new FormControl('', Validators.required)
@@ -55,7 +56,7 @@ addCourseToUser(){
   this.user = this.app.getUser()
   this._courseService.addCourseToUser(new CoursePayload(this.user.id, this.course)).subscribe(
     data => {
-      console.log("userid: ", this.user.id);
+      this.message = "Successfully added.";
       this.getUsersOnCourse();
       },)
 }  
@@ -90,6 +91,33 @@ postComment() {
   }, error => {
     throwError(error);
   })
+}
+
+removeCourse(){
+  this.user = this.app.getUser();
+  this._courseService.removeUserFromCourse(new CoursePayload(this.user.id, this.course)).subscribe(
+    data =>{
+      window.location.reload();
+      this.message = "Successfully removed.";
+    }
+  );
+}
+
+
+isRemovable(){
+  this.user = this.app.getUser();
+  if(this.users.filter(u => u.username == this.user.username).length > 0){
+    return true;
+  }
+  return false;
+}
+
+canAdd(){
+  this.user = this.app.getUser();
+  if(this.users.filter(u => u.username == this.user.username).length > 0){
+    return false;
+  }
+  return true;
 }
 
 

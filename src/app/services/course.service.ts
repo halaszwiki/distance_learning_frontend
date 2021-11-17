@@ -39,9 +39,7 @@ export class CourseService {
   }
 
   getCourse(id: number): Observable<Course>{
-    return this._httpClient.get<Course>(`${this.getUrl}/${id}`).pipe(
-      map(response => response)
-    )
+    return this._httpClient.get<Course>(`${this.getUrl}/${id}`)
   }
 
   deleteCourse(id: number): Observable<any>{
@@ -50,6 +48,10 @@ export class CourseService {
 
   addCourseToUser(coursePayload: CoursePayload): Observable<CoursePayload>{ 
     return this._httpClient.post<CoursePayload>(`${this.getUrl}/addCourseToUser`, coursePayload);
+  }
+
+  removeUserFromCourse(coursePayload: CoursePayload): Observable<CoursePayload>{ 
+    return this._httpClient.post<CoursePayload>(`${this.getUrl}/removeFromCourse`, coursePayload);
   }
 
   getUsersOnCourse(id: number): Observable<User[]>{ 

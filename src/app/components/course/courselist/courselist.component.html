@@ -5,8 +5,7 @@
   <input class="search-box" type="text" placeholder="Search by course name" [(ngModel)]="searchBox"/> 
 </div>
 
-  
-<table>
+<table *ngIf="courses.length > 0">
   <thead>
       <tr>
         <th (click)="sort('name')">Name <i class="fa fa-sort"></i> </th>
@@ -32,6 +31,9 @@
       </tr>
   </tbody>
 </table>
+<div *ngIf="courses.length == 0"> 
+  <p>No courses yet.</p>
+</div>
 
 </body>
 

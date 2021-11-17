@@ -8,13 +8,14 @@
         <h3 class="title">E-mail address <button class="editButton" routerLink="/editprofile/{{user.id}}">Edit</button></h3>
         <h3>{{user.email}}</h3>
         <h3 class="title">Courses</h3>
-        <li  *ngFor="let course of user.courses">
+        <li  *ngFor="let course of courses">
             {{course.name}}
         </li>
         <h3 class="title">Exams</h3>
-        <li  *ngFor="let exam of user.exams">
-            {{exam.name}}
+        <li  *ngFor="let exam of exams">
+            {{exam.name}} - {{exam.date | date:'longDate'}}
         </li>
+
         
     </div>
 </div>

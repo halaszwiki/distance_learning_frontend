@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { map } from 'rxjs/operators'
 import { Course } from '../models/course';
+import { Exam } from '../models/exam';
+import { Grade } from '../models/grade';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +32,13 @@ export class UserService {
 
   deleteUser(id: number): Observable<any>{
     return this._httpClient.delete(`${this.getUrl}/${id}`, {responseType: 'text'});
+  }
+
+  getExams(id: number): Observable<Exam[]>{
+    return this._httpClient.get<Exam[]>(`${this.getUrl}/${id}/exams`)
+  }
+
+  getGrades(id: number): Observable<Grade[]>{
+    return this._httpClient.get<Grade[]>(`${this.getUrl}/${id}/grades`)
   }
 }

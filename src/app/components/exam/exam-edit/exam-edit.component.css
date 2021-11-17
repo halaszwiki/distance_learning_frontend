@@ -29,15 +29,33 @@ select {
 }
 
 button {
-  min-width: 100px;
-  margin-top: 40px;
-  border-radius: 40px;
-  padding: 8px;
-  outline: none;
+  background-color: #ffffff;
+  border: 1px solid rgb(209, 213, 219);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding: 0.75rem 1rem;
   text-align: center;
-  background-color: rgb(233, 210, 180);
+  text-decoration: none #d1d5db solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
+button:hover {
+  background-color: rgb(249, 250, 251);
+}
+
+button:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
 h3 {
   display: inline-block;
   margin-right: 50px;

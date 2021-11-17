@@ -23,8 +23,7 @@ export class ExamDetailComponent implements OnInit {
   users: User[] = [];
   grade: string;
   message: string = "";
-  isUsersEmpty: boolean = false;
-  noUsers: string = "Nope";
+  isUsersEmpty: boolean = false
 
   constructor(private _examService: ExamService,
               private _activatedRoute: ActivatedRoute,
@@ -52,6 +51,7 @@ registerUserToExam(){
     data => {
       console.log("userid: ", this.user.id);
       this.getUsersOnExam();
+      this.message = "Successfully registered.";
       },)
       
   }
@@ -80,8 +80,8 @@ registerUserToExam(){
     this.user = this.app.getUser();
     this._examService.removeUserFromExam(new ExamPayload(this.user.id, this.exam)).subscribe(
       data =>{
+        window.location.reload();
         this.message = "Successfully removed.";
-        this._router.navigateByUrl("/exams");
       }
     );
   }
